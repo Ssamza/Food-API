@@ -1,0 +1,8 @@
+const { Router } = require("express");
+const dietsRouter = Router();
+
+dietsRouter.get("/", (req, res) => {
+  res.status(200).json({ message: "diets received" });
+});
+
+module.exports = dietsRouter;
