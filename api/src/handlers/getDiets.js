@@ -1,3 +1,5 @@
+const findAllDiets = require("../controllers/findAllDiets");
+
 const getDietsHandler = async (req, res) => {
   try {
     const diets = await findAllDiets();

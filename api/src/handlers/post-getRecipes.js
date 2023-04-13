@@ -1,18 +1,14 @@
 const createRecipe = require("../controllers/createRecipe");
-const getRecipeById = require("../controllers/getRecipeById");
+const getRecipeById = require("../controllers/recipeById");
 
-//query
-const getRecipesNameHandler = (req, res) => {
+//query?
+const getRecipesNameHandler = async (req, res) => {
   const { name } = req.query;
-
-  if (name) {
-    const nameLowerCase = name.toLowerCase();
-    res
-      .status(200)
-      .json({ message: `here is the recipe received: ${nameLowerCase}` });
-  } else {
-    res.status(400).json({ error: "the recipe does not exist" });
-  }
+  try {
+    const response = await getRecipeByName(name);
+    res.status(200).json(response);
+  } catch (error) {}
+  res.status(400).json({ error: error.message });
 };
 
 //:idRecipe => params
@@ -29,6 +25,7 @@ const getIdRecipeHandler = async (req, res) => {
   }
 };
 
+//post
 const postRecipes = async (req, res) => {
   try {
     const { title, image, summary, healthScore, dishTypes, diet } = req.body;
