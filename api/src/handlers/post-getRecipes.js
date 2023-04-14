@@ -1,5 +1,6 @@
 const createRecipe = require("../controllers/createRecipe");
 const getRecipeById = require("../controllers/recipeById");
+const getRecipeByName = require("../controllers/recipeName");
 
 //query?
 const getRecipesNameHandler = async (req, res) => {
@@ -7,8 +8,9 @@ const getRecipesNameHandler = async (req, res) => {
   try {
     const response = await getRecipeByName(name);
     res.status(200).json(response);
-  } catch (error) {}
-  res.status(400).json({ error: error.message });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 //:idRecipe => params
@@ -16,7 +18,6 @@ const getIdRecipeHandler = async (req, res) => {
   const { id } = req.params;
   //validar si es un numero
   const infoSource = isNaN(id) ? "DB" : "API";
-
   try {
     const response = await getRecipeById(id, infoSource);
     res.status(200).json(response);
@@ -28,14 +29,14 @@ const getIdRecipeHandler = async (req, res) => {
 //post
 const postRecipes = async (req, res) => {
   try {
-    const { title, image, summary, healthScore, dishTypes, diet } = req.body;
+    const { title, image, summary, healthScore, dishTypes, diets } = req.body;
     const newRecipe = await createRecipe({
       title,
       image,
       summary,
       healthScore,
       dishTypes,
-      diet,
+      diets,
     });
     res.status(200).json(newRecipe);
   } catch (error) {
