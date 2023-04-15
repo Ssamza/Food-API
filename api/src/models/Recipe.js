@@ -28,8 +28,8 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      dishTypes: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+      analyzedInstructions: {
+        type: DataTypes.JSON,
         allowNull: false,
       },
     },

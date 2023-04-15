@@ -1,24 +1,45 @@
 const { Recipe, Diet } = require("../db");
+const { Op } = require("sequelize");
 
 const createRecipe = async ({
   title,
   image,
   summary,
   healthScore,
-  dishTypes,
-  diet,
+  analyzedInstructions,
+  diets,
 }) => {
   const newRecipe = await Recipe.create({
     title,
     image,
     summary,
     healthScore,
-    dishTypes,
+    analyzedInstructions,
   });
+  let foundDiets = [];
 
-  newRecipe.addDiets(diet);
+  if (diets.length > 0) {
+    for (const name of diets) {
+      const diet = await Diet.findOne({
+        where: {
+          title: name,
+        },
+      });
+      if (!diet) {
+        throw new Error(`Diet '${name}' not found`);
+      }
+      await newRecipe.addDiet(diet);
+      foundDiets.push(diet);
+    }
+  } else {
+    throw new Error("No diet found");
+  }
 
-  return newRecipe;
+  const recipeWithDiets = {
+    diets: foundDiets.map((diet) => diet.title),
+  };
+
+  return { ...newRecipe.toJSON(), ...recipeWithDiets };
 };
 
 module.exports = createRecipe;

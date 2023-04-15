@@ -11,7 +11,12 @@ const getRecipeByName = async (name) => {
   // return data;
 
   const recipeDB = await Recipe.findAll({
-    where: { title: name },
+    where: {
+      title: {
+        [Op.iLike]: `%${name}%`,
+      },
+    },
+    attributes: { exclude: ["id"] },
   });
 
   const filterRecipes = data.results
@@ -23,11 +28,19 @@ const getRecipeByName = async (name) => {
         title: recipe.title,
         image: recipe.image,
         healthScore: recipe.healthScore,
+        analyzedInstructions: recipe.analyzedInstructions
+          .map((instruction) =>
+            instruction.steps.map((ele) => ({
+              number: ele.number,
+              step: ele.step,
+            }))
+          )
+          .flat(),
       };
     });
 
   if (recipeDB.length == 0 && filterRecipes.length == 0) {
-    throw Error("Match not found");
+    throw Error("Recipe does not exist");
   } else {
     return [...filterRecipes, ...recipeDB];
   }

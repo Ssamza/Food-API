@@ -4,10 +4,18 @@ const axios = require("axios");
 const { Diet } = require("../db");
 
 const findAllDiets = async () => {
-  const response = await axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`
-  ); //estoy solicitando toda la info en esta ruta
-  const data = response.data;
+  const diets = await Diet.findAll();
+
+  let data;
+  if (diets.length > 0) {
+    return diets;
+  } else {
+    const response = await axios.get(
+      // `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
+      `https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`
+    );
+    data = response.data;
+  } //estoy solicitando toda la info en esta ruta
 
   // return data;
 

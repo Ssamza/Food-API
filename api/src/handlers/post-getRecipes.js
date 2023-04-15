@@ -29,13 +29,14 @@ const getIdRecipeHandler = async (req, res) => {
 //post
 const postRecipes = async (req, res) => {
   try {
-    const { title, image, summary, healthScore, dishTypes, diets } = req.body;
+    const { title, image, summary, healthScore, analyzedInstructions, diets } =
+      req.body;
     const newRecipe = await createRecipe({
       title,
       image,
       summary,
       healthScore,
-      dishTypes,
+      analyzedInstructions,
       diets,
     });
     res.status(200).json(newRecipe);
