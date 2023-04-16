@@ -16,7 +16,7 @@ const getRecipeByName = async (name) => {
         [Op.iLike]: `%${name}%`,
       },
     },
-    attributes: { exclude: ["id"] },
+    attributes: { exclude: ["id", "summary"] },
   });
 
   const filterRecipes = data.results

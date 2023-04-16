@@ -16,6 +16,7 @@ const createRecipe = async ({
     healthScore,
     analyzedInstructions,
   });
+
   let foundDiets = [];
 
   if (diets.length > 0) {
@@ -26,7 +27,7 @@ const createRecipe = async ({
         },
       });
       if (!diet) {
-        throw new Error(`Diet '${name}' not found`);
+        throw new Error(`Diet '${name}' is not valid`);
       }
       await newRecipe.addDiet(diet);
       foundDiets.push(diet);
