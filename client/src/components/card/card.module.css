@@ -1,0 +1,23 @@
+.container {
+    background-color: rgb(150, 183, 201);
+        padding: 1em;
+        border-radius: 35px;
+        margin-bottom: 12px;
+        font-family: monospace;
+        height: 180px;
+        width: 320px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.cardContainer{
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    margin: 1px;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+

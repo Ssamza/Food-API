@@ -1,0 +1,17 @@
+.container{
+    /* background-color: rgb(150, 183, 201); */
+        /* padding: 1em; */
+        /* margin: 40px 120px 0 120px; */
+        margin: 30px;
+        border-radius: 35px;
+        font-family: monospace;
+        font-size: 0.75em;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        
+        justify-content: space-around;
+        
+}
+

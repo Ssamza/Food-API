@@ -1,0 +1,79 @@
+.image {
+    background-color: rgba(181, 230, 213, 0.505);
+    background-image: url("../../images/Deconstructed\ food-amico2.png");
+    background-size: contain;
+    background-position: 93%;
+    background-repeat: no-repeat;
+    height: 100;
+    /* position: relative; */
+    padding: 10px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    width: 30%;
+    margin-left: 130px;
+    /* margin-bottom: px; */
+}
+
+.cover{
+    display: flex;
+    align-items: center;
+    height: 97vh;
+    
+}
+
+.text{
+    font-family:monospace, sans-serif;
+    font-weight:lighter;
+    letter-spacing: 2px;
+    font-size: 50px;
+
+}
+
+.paragraph{
+    font-family: monospace;
+    font-size: 12px;
+    text-align: justify;
+    letter-spacing: 1px;
+    line-height: 18px;
+    margin-bottom: 50px;
+
+}
+
+.button{
+    height: 2em;
+    border-radius: 50px;
+    background-color: white;
+    margin: 1em 12em 1em 12em;
+    font-family: monospace;
+    border: 1px solid grey;
+    /* color: white; */
+}
+
+.button:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+    }
+
+
+/* 
+@keyframes cambio-color {
+    0% {
+        background-color: #d3564a;
+    }
+    25% {
+        background-color: #e29e4b;
+    }
+    50% {
+        background-color: #f4e133c6;
+    }
+    75% {
+            background-color: #e29e4b;
+        }
+    100% {
+        background-color: #d3564a;
+            }
+} */

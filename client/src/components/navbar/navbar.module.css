@@ -1,0 +1,35 @@
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* margin-right: 85px; */
+}
+
+.searchInput {
+    border: 1px ridge rgb(150, 183, 201) ;
+    border-radius: 15px 0px 0px 15px;
+    height: 1.9em;
+    padding-left: 10px;
+    font-family: monospace;
+    letter-spacing: 1px;
+
+}
+
+.searchInput::placeholder{
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgb(184, 180, 180);
+}
+
+.searchButton {
+    font-family: monospace;
+    border: 0px;
+    border-radius: 0px 15px 15px 0px;
+    height: 2.2em;
+
+}
+
+.searchButton:hover {
+    background-color: rgb(150, 183, 201);
+
+}
