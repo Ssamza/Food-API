@@ -1,6 +1,6 @@
 const createRecipe = require("../controllers/createRecipe");
 const getRecipeById = require("../controllers/recipeById");
-const getRecipeByName = require("../controllers/recipeName");
+const getRecipeByName = require("../controllers/recipeAll&Name");
 const deleteRecipe = require("../controllers/deleteRecipe");
 
 //query?

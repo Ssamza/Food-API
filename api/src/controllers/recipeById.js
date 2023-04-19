@@ -21,7 +21,7 @@ const getRecipeById = async (id, infoSource) => {
       id,
       title,
       image,
-      summary,
+      summary: summary.replace(/<[^>]*>/g, ""),
       healthScore,
       analyzedInstructions: justInstructions,
     };
