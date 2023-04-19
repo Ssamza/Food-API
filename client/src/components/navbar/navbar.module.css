@@ -8,7 +8,7 @@
 .searchInput {
     border: 1px ridge rgb(150, 183, 201) ;
     border-radius: 15px 0px 0px 15px;
-    height: 1.9em;
+    height: 2em;
     padding-left: 10px;
     font-family: monospace;
     letter-spacing: 1px;
@@ -25,7 +25,7 @@
     font-family: monospace;
     border: 0px;
     border-radius: 0px 15px 15px 0px;
-    height: 2.2em;
+    height: 2em;
 
 }
 
