@@ -14,7 +14,7 @@ const getRecipesNameHandler = async (req, res) => {
   }
 };
 
-//:idRecipe => params
+//:id => params
 const getIdRecipeHandler = async (req, res) => {
   const { id } = req.params;
   //validar si es un numero

@@ -7,7 +7,9 @@ const getRecipeById = async (id, infoSource) => {
     const response = await axios.get(
       `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
     );
-    const { title, image, summary, healthScore, analyzedInstructions } =
+
+    //     //*API
+    const { title, image, summary, healthScore, analyzedInstructions, diets } =
       response.data;
     const justInstructions = analyzedInstructions
       .map((instruction) =>
@@ -17,12 +19,14 @@ const getRecipeById = async (id, infoSource) => {
         }))
       )
       .flat();
+    // .map(step => [step.number, step.step]);
     return {
       id,
       title,
       image,
       summary: summary.replace(/<[^>]*>/g, ""),
       healthScore,
+      diets,
       analyzedInstructions: justInstructions,
     };
   } else {
