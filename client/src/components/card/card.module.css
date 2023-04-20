@@ -2,22 +2,32 @@
     background-color: rgb(150, 183, 201);
         padding: 1em;
         border-radius: 35px;
-        margin: 30px;
+        margin: 30px 30px 20px 30px;
         font-family: monospace;
         height: fit-content;
         width: 350px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
+    line-height: 0px;
 }
 
 .cardContainer{
     display: flex;
     flex-direction: column;
     text-align: start;
-    margin: 1px;
+    margin: 10px;
 }
 
 .container:hover {
     transform: scale(1.02);
 }
 
+.nameLink{
+    color: rgb(0, 0, 0) !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.diets{
+    line-height:normal;
+}
