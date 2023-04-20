@@ -1,8 +1,8 @@
 import style from "./card.module.css";
 import { NavLink } from "react-router-dom";
 
-function Card({ recipe, diets }) {
-  const { id, image, title, healthScore } = recipe;
+function Card({ recipe }) {
+  const { id, image, title, healthScore, diets } = recipe;
 
   return (
     <div className={style.container}>
@@ -15,7 +15,14 @@ function Card({ recipe, diets }) {
         </p>
         <p className={style.score}>Score: {healthScore}</p>
         <p className={style.diets}>
-          Diet: {diets.map((diet) => diet.title).join(", ")}
+          Diet:{" "}
+          {diets.map((diet, index) => {
+            if (index === diets.length - 1) {
+              return diet + ".";
+            } else {
+              return diet + ", ";
+            }
+          })}
         </p>
       </div>
     </div>

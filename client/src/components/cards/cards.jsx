@@ -1,14 +1,14 @@
 import Card from "../card/card";
 import style from "./cards.module.css";
 
-function Cards({ allRecipes, diets }) {
+function Cards({ allRecipes }) {
   const recipesList = allRecipes;
 
   return (
     <div className={style.lastElement}>
       <div className={style.container}>
         {recipesList?.map((recipe) => {
-          return <Card recipe={recipe} diets={diets} />;
+          return <Card recipe={recipe} />;
         })}
       </div>
     </div>

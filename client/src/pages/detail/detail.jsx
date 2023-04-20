@@ -40,7 +40,7 @@ function Detail() {
               <p>
                 <span>SCORE:</span> {recipe.healthScore}{" "}
               </p>
-              <p>SUMMARY:</p>
+              <p>ABOUT:</p>
               <p>{recipe.summary}</p>
               <ol>
                 <p>INSTRUCTIONS:</p>

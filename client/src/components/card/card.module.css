@@ -8,7 +8,7 @@
         width: 350px;
     display: flex;
     justify-content: flex-start;
-    line-height: 0px;
+    line-height: normal;
 }
 
 .cardContainer{

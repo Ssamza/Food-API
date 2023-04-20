@@ -2,14 +2,15 @@ import {
   GET_RECIPES,
   GET_BY_NAME,
   GET_RECIPE_DETAIL,
-  GET_DIETS,
+  CLEAR_RECIPES,
   CLEAR_DETAIL,
+  GET_DIETS,
 } from "./actions";
 
 let initialState = {
   allRecipes: [],
   allRecipesCopy: [],
-  recipeDetail: [],
+  recipeDetail: {},
   diets: [],
 };
 
@@ -21,6 +22,12 @@ function rootReducer(state = initialState, action) {
         allRecipes: action.payload,
         allRecipesCopy: action.payload,
       };
+    case CLEAR_RECIPES:
+      return {
+        ...state,
+        allRecipes: [],
+        allRecipesCopy: [],
+      };
     case GET_BY_NAME:
       return {
         ...state,
@@ -31,15 +38,10 @@ function rootReducer(state = initialState, action) {
         ...state,
         recipeDetail: action.payload,
       };
-    case GET_DIETS:
-      return {
-        ...state,
-        diets: action.payload,
-      };
     case CLEAR_DETAIL:
       return {
         ...state,
-        recipeDetail: [],
+        recipeDetail: {},
       };
     default:
       return state;
