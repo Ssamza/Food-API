@@ -1,14 +1,24 @@
 const createRecipe = require("../controllers/createRecipe");
 const getRecipeById = require("../controllers/recipeById");
-const getRecipeByName = require("../controllers/recipeAll&Name");
+const getAll = require("../controllers/recipeAll&Name");
 const deleteRecipe = require("../controllers/deleteRecipe");
 
 //query?
-const getRecipesNameHandler = async (req, res) => {
-  const { name } = req.query;
+const getRecipesHandler = async (req, res) => {
   try {
-    const response = await getRecipeByName(name);
-    res.status(200).json(response);
+    const { name } = req.query;
+    const all = await getAll();
+    if (name) {
+      let recipeName = all.filter((recipe) =>
+        recipe.title.toLowerCase().includes(name.toLowerCase())
+      );
+      if (recipeName.length === 0) {
+        throw new Error("Recipe not available");
+      }
+      res.status(200).json(recipeName);
+    } else {
+      res.status(200).json(all);
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -30,13 +40,21 @@ const getIdRecipeHandler = async (req, res) => {
 //post
 const postRecipes = async (req, res) => {
   try {
-    const { title, image, summary, healthScore, analyzedInstructions, diets } =
-      req.body;
+    const {
+      title,
+      image,
+      summary,
+      healthScore,
+      analyzedInstructions,
+      diets,
+      created,
+    } = req.body;
     const newRecipe = await createRecipe({
       title,
       image,
       summary,
       healthScore,
+      created,
       analyzedInstructions,
       diets,
     });
@@ -58,7 +76,7 @@ const deleteRecipeHandler = async (req, res) => {
 
 module.exports = {
   getIdRecipeHandler,
-  getRecipesNameHandler,
+  getRecipesHandler,
   postRecipes,
   deleteRecipeHandler,
 };

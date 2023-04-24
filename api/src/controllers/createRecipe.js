@@ -8,6 +8,7 @@ const createRecipe = async ({
   healthScore,
   analyzedInstructions,
   diets,
+  created,
 }) => {
   const newRecipe = await Recipe.create({
     title,
@@ -15,6 +16,7 @@ const createRecipe = async ({
     summary,
     healthScore,
     analyzedInstructions,
+    created: true,
   });
 
   let foundDiets = [];

@@ -28,6 +28,7 @@ const getRecipeById = async (id, infoSource) => {
       healthScore,
       diets,
       analyzedInstructions: justInstructions,
+      created: false,
     };
   } else {
     return await Recipe.findByPk(id);

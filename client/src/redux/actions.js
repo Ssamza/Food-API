@@ -65,9 +65,15 @@ export function byScore(score) {
 }
 
 export function byDiet(diet) {
+  console.log("byDiet action:", diet);
   return { type: FILTER_BY_DIET, payload: diet };
 }
 
-export function bySource(source) {
-  return { type: FILTER_BY_SOURCE, payload: source };
+export function bySource() {
+  return async function (dispatch) {
+    const URL = "http://localhost:3001";
+    const response = await axios(`${URL}/recipes/all`);
+    console.log(response.data);
+    return dispatch({ type: FILTER_BY_SOURCE, payload: response.data });
+  };
 }

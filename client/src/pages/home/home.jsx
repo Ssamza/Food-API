@@ -6,6 +6,7 @@ import {
   getDiets,
   clearRecipes,
 } from "../../redux/actions";
+import Filters from "./filters";
 import Cards from "../../components/cards/cards";
 import Navbar from "../../components/navbar/navbar";
 import style from "./home.module.css";
@@ -13,7 +14,13 @@ import style from "./home.module.css";
 function Home() {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.allRecipes);
+
   const [searchRecipe, setSearchRecipe] = useState("");
+
+  const diets = useSelector((state) => state.diets);
+
+  const [byAz, setByAz] = useState("");
+  const [byScore, setByScore] = useState("");
 
   // * Paginado
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,17 +34,17 @@ function Home() {
   );
 
   useEffect(() => {
-    dispatch(getRecipes());
     dispatch(getDiets());
+    dispatch(getRecipes());
     return () => {
       dispatch(clearRecipes());
     };
   }, [dispatch]);
 
   // * Filtro con el back-end
-  function handleChange(e) {
-    e.preventDefault();
-    setSearchRecipe(e.target.value.toLowerCase());
+  function handleChange(event) {
+    event.preventDefault();
+    setSearchRecipe(event.target.value.toLowerCase());
   }
 
   function handleSubmit() {
@@ -58,8 +65,12 @@ function Home() {
     <div className={style.homeContainer}>
       {allRecipes.length > 0 ? (
         <>
-          <h2 className={style.homeTitle}>Home page</h2>
-          <Navbar onChange={handleChange} onClick={handleSubmit} />
+          <div>
+            <Navbar onChange={handleChange} onClick={handleSubmit} />
+          </div>
+          <div>
+            <Filters diets={diets} Az={setByAz} Score={setByScore} />
+          </div>
           <div className={style.pagination}>
             <button onClick={() => previous()}>{"\u00AB"}</button>
             {Array.from({ length: totalPages }).map((x, index) => (
