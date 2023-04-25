@@ -10,6 +10,7 @@ export const FILTER_BY_AZ = "FILTER_BY_AZ";
 export const FILTER_BY_DIET = "FILTER_BY_DIET";
 export const FILTER_BY_SCORE = "FILTER_BY_SCORE";
 export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
+export const ADD_RECIPE = "ADD_RECIPE";
 
 export function getRecipes() {
   return async function (dispatch) {
@@ -47,6 +48,14 @@ export function getDiets() {
   };
 }
 
+export function addRecipe(payload) {
+  return async function (dispatch) {
+    const URL = "http://localhost:3001";
+    await axios.post(`${URL}/recipes`, payload);
+    return dispatch({ type: ADD_RECIPE, payload });
+  };
+}
+
 export function clearRecipes() {
   return { type: CLEAR_RECIPES };
 }
@@ -69,11 +78,6 @@ export function byDiet(diet) {
   return { type: FILTER_BY_DIET, payload: diet };
 }
 
-export function bySource() {
-  return async function (dispatch) {
-    const URL = "http://localhost:3001";
-    const response = await axios(`${URL}/recipes/all`);
-    console.log(response.data);
-    return dispatch({ type: FILTER_BY_SOURCE, payload: response.data });
-  };
+export function bySource(source) {
+  return { type: FILTER_BY_SOURCE, payload: source };
 }

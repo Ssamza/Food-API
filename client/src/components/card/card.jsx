@@ -16,7 +16,7 @@ function Card({ recipe }) {
         <p className={style.score}>Score: {healthScore}</p>
         <p className={style.diets}>
           Diet:{" "}
-          {diets.map((diet, index) => {
+          {diets?.map((diet, index) => {
             if (index === diets.length - 1) {
               return diet + ".";
             } else {

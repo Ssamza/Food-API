@@ -1,5 +1,6 @@
 import { all } from "axios";
 import {
+  ADD_RECIPE,
   GET_RECIPES,
   GET_BY_NAME,
   GET_RECIPE_DETAIL,
@@ -17,6 +18,7 @@ let initialState = {
   allRecipesCopy: [],
   recipeDetail: {},
   diets: [],
+  newRecipe: {},
 };
 
 function rootReducer(state = initialState, action) {
@@ -103,28 +105,36 @@ function rootReducer(state = initialState, action) {
         allRecipes: recipesByDiet,
       };
     case FILTER_BY_SOURCE:
-      console.log("All Recipes Copy before filtering:", allRecipes);
-      const all = action.payload;
-      let filteredRecipes = [];
+      // console.log("All Recipes Copy before filtering:", allRecipes);
+      if (action.payload === "API") {
+        const recipesAPI = allRecipesCopy.filter(
+          (recipe) => recipe.created === false
+        );
+        // console.log("After filtering:", recipesAPI);
 
-      switch (action.filterBy) {
-        case "DB":
-          filteredRecipes = all.filter((recipe) => recipe.created === true);
-          break;
-        case "API":
-          filteredRecipes = all.filter((recipe) => recipe.created === false);
-          break;
-        default:
-          filteredRecipes = all;
-          break;
+        return { ...state, allRecipes: recipesAPI };
+      } else if (action.payload === "DB") {
+        const recipesDB = allRecipesCopy.filter(
+          (recipe) => recipe.created === true
+        );
+        if (recipesDB.length === 0) {
+          window.alert("No recipes added");
+        } else {
+          return {
+            ...state,
+            allRecipes: recipesDB,
+          };
+        }
+        // console.log("After filtering:", recipesDB);
+      } else {
+        return {
+          ...state,
+          allRecipes: allRecipesCopy,
+        };
       }
-      console.log("After filtering:", filteredRecipes);
-      console.log("After filtering:", all);
-
+    case ADD_RECIPE:
       return {
         ...state,
-        allRecipes: filteredRecipes,
-        allRecipesCopy: all,
       };
     default:
       return state;

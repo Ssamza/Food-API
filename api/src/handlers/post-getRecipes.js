@@ -54,9 +54,9 @@ const postRecipes = async (req, res) => {
       image,
       summary,
       healthScore,
-      created,
       analyzedInstructions,
       diets,
+      created,
     });
     res.status(200).json(newRecipe);
   } catch (error) {

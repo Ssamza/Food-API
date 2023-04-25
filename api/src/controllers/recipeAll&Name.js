@@ -10,23 +10,44 @@ const getFromApi = async () => {
   );
   const data = response.data;
   data.results.map((recipe) => {
-    recipesAPI.push({
-      id: recipe.id,
-      title: recipe.title,
-      image: recipe.image,
-      summary: recipe.summary.replace(/<[^>]*>/g, ""),
-      diets: recipe.diets,
-      healthScore: recipe.healthScore,
-      analyzedInstructions: recipe.analyzedInstructions
-        .map((instruction) =>
-          instruction.steps.map((ele) => ({
-            number: ele.number,
-            step: ele.step,
-          }))
-        )
-        .flat(),
-      created: false,
-    });
+    if (recipe.vegetarian === true) {
+      const vegetarians = ["vegetarian", ...recipe.diets];
+      recipesAPI.push({
+        id: recipe.id,
+        title: recipe.title,
+        image: recipe.image,
+        summary: recipe.summary.replace(/<[^>]*>/g, ""),
+        diets: vegetarians,
+        healthScore: recipe.healthScore,
+        analyzedInstructions: recipe.analyzedInstructions
+          .map((instruction) =>
+            instruction.steps.map((ele) => ({
+              number: ele.number,
+              step: ele.step,
+            }))
+          )
+          .flat(),
+        created: false,
+      });
+    } else {
+      recipesAPI.push({
+        id: recipe.id,
+        title: recipe.title,
+        image: recipe.image,
+        summary: recipe.summary.replace(/<[^>]*>/g, ""),
+        diets: recipe.diets,
+        healthScore: recipe.healthScore,
+        analyzedInstructions: recipe.analyzedInstructions
+          .map((instruction) =>
+            instruction.steps.map((ele) => ({
+              number: ele.number,
+              step: ele.step,
+            }))
+          )
+          .flat(),
+        created: false,
+      });
+    }
   });
   return recipesAPI;
 };
@@ -43,13 +64,15 @@ const getFromDB = async () => {
   });
 
   const allRecipesDB = recipesDB.map((recipe) => {
+    const diets = recipe.diets ? recipe.diets.map((diet) => diet.title) : [];
+
     return {
       id: recipe.id,
       title: recipe.title,
       image: recipe.image,
       summary: recipe.summary.replace(/<[^>]*>/g, ""),
-      diets: recipe.diets,
       healthScore: recipe.healthScore,
+      diets: diets,
       analyzedInstructions: recipe.analyzedInstructions,
       created: recipe.created,
     };

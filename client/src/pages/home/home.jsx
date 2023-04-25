@@ -68,10 +68,11 @@ function Home() {
           <div>
             <Navbar onChange={handleChange} onClick={handleSubmit} />
           </div>
-          <div>
-            <Filters diets={diets} Az={setByAz} Score={setByScore} />
-          </div>
           <div className={style.pagination}>
+            <div>
+              <Filters diets={diets} Az={setByAz} Score={setByScore} />
+            </div>
+            <button></button>
             <button onClick={() => previous()}>{"\u00AB"}</button>
             {Array.from({ length: totalPages }).map((x, index) => (
               <button key={index} onClick={() => setCurrentPage(index + 1)}>
