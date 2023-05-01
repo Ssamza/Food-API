@@ -1,0 +1,11 @@
+.page select {
+    position: relative;
+    left: -55%;
+    margin-right: 2px;
+    margin-left: 2px;
+    color: black;
+    font-family: monospace;
+    font-weight: bolder;
+    border-radius: 50px;
+
+}

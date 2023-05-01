@@ -1,22 +1,47 @@
 .container {
-    background-color: rgb(150, 183, 201);
-        padding: 1em;
-        border-radius: 35px;
-        margin: 30px 30px 20px 30px;
+    background-color: rgb(255, 255, 255);
+        /* padding: 1em; */
+        border: 1px solid rgb(168, 168, 168);
+        border-radius: 15px 15px 0 0;
+        box-shadow: -7px 6px 11px 1px rgba(0, 0, 0, 0.51);
+            -webkit-box-shadow: -7px 6px 11px 1px rgba(0, 0, 0, 0.51);
+            -moz-box-shadow: -7px 6px 11px 1px rgba(0, 0, 0, 0.51);
+        margin: 10px 14px;
         font-family: monospace;
-        height: fit-content;
-        width: 350px;
+        height: 370px;
+        width: 280px;
     display: flex;
     justify-content: flex-start;
-    line-height: normal;
+    /* line-height: normal; */
 }
+
 
 .cardContainer{
     display: flex;
     flex-direction: column;
     text-align: start;
-    margin: 10px;
+    margin: 5px;
 }
+.caption{
+    background-color: rgb(252, 221, 62);
+    padding: 0 0.5rem 0 0.5rem;
+    border-radius: 10px;
+    margin: 10px; 
+}
+
+
+.imageContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.img {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    
+
+}
+
 
 .container:hover {
     transform: scale(1.02);
@@ -26,8 +51,21 @@
     color: rgb(0, 0, 0) !important;
     text-decoration: none;
     cursor: pointer;
+    font-size: 12px;
 }
+
+.nameLink:hover {
+    color: rgb(70, 69, 66) !important;
+    text-decoration: underline;
+}
+
 
 .diets{
     line-height:normal;
+}
+
+.span {
+    font-weight: bold;
+    font-size: 11px;
+
 }

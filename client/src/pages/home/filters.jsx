@@ -28,33 +28,43 @@ function Filters({ diets, Az, Score }) {
   //   }
 
   return (
-    <div className={style.container}>
-      <select name="byAz" onChange={handlerByAz}>
-        <option value="top-down">A-z</option>
-        <option value="bottom-up">Z-a</option>
-      </select>
-      <select name="byScore" onChange={handlerByScore}>
-        <option value="low">LowScore</option>
-        <option value="high">HighScore</option>
-      </select>
-      <select name="diets" onChange={handlerByDiets}>
-        <option value="select" disabled>
-          Select diet
-        </option>
-        <option value="allDiets" defaultValue>
-          All
-        </option>
-        {diets?.map((diet) => (
-          <option key={diet.id} value={diet.title}>
-            {diet.title}
+    <div className={style.page}>
+      <div className={style.container}>
+        <select className={style.byAz} name="byAz" onChange={handlerByAz}>
+          <option value="top-down">A-z</option>
+          <option value="bottom-up">Z-a</option>
+        </select>
+        <select
+          className={style.byScore}
+          name="byScore"
+          onChange={handlerByScore}
+        >
+          <option value="low">LowScore</option>
+          <option value="high">HighScore</option>
+        </select>
+        <select className={style.diets} name="diets" onChange={handlerByDiets}>
+          <option value="select" disabled>
+            Select diet
           </option>
-        ))}
-      </select>
-      <select name="bySource" onChange={handlerBySource}>
-        <option value="allData">All Recipes</option>
-        <option value="API">Online Data</option>
-        <option value="DB">Recipes Added</option>
-      </select>
+          <option value="allDiets" defaultValue>
+            All
+          </option>
+          {diets?.map((diet) => (
+            <option key={diet.id} value={diet.title}>
+              {diet.title}
+            </option>
+          ))}
+        </select>
+        <select
+          className={style.bySource}
+          name="bySource"
+          onChange={handlerBySource}
+        >
+          <option value="allData">All Recipes</option>
+          <option value="API">Online Data</option>
+          <option value="DB">Recipes Added</option>
+        </select>
+      </div>
     </div>
   );
 }

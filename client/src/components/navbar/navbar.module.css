@@ -6,7 +6,7 @@
 }
 
 .searchInput {
-    border: 1px ridge rgb(150, 183, 201) ;
+    border: 3px ridge rgb(32, 32, 32) ;
     border-radius: 15px 0px 0px 15px;
     height: 2em;
     padding-left: 10px;
@@ -17,6 +17,7 @@
 
 .searchInput::placeholder{
     font-size: 10px;
+    font-family: monospace;
     letter-spacing: 2px;
     color: rgb(184, 180, 180);
 }
@@ -26,10 +27,13 @@
     border: 0px;
     border-radius: 0px 15px 15px 0px;
     height: 2em;
+    background-color: black;
+    color: white;
+    
 
 }
 
 .searchButton:hover {
-    background-color: rgb(150, 183, 201);
+    transform: scale(1.03);
 
 }

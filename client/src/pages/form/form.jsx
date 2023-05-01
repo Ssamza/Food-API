@@ -103,7 +103,8 @@ const Form = () => {
       !errors.image &&
       !errors.summary &&
       !errors.healthScore &&
-      !errors.analyzedInstructions
+      !errors.analyzedInstructions &&
+      !errors.image
     ) {
       try {
         dispatch(addRecipe(input));
@@ -123,127 +124,133 @@ const Form = () => {
   };
 
   const handleDelete = (event) => {
-    const index = input.diets.indexOf(event.target.value);
+    const dietToRemove = event.target.value;
     setInput({
       ...input,
-      diets: input.diets.filter((diet) => diet !== event.target.value),
+      diets: input.diets.filter((diet) => diet !== dietToRemove),
     });
+    setSelectDiet(selectDiet.filter((d) => d.title !== dietToRemove));
   };
 
   return (
-    <div>
+    <div className={style.background}>
       <h2>ADD A NEW RECIPE!</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name: </label>
-          <input
-            type="text"
-            name="title"
-            value={input.title}
-            placeholder="recipe's name"
-            onChange={handleChange}
-          />
-        </div>
-        <div>{errors.title && <span>{errors.name}</span>}</div>
-
-        <div>
-          <label>Image: </label>
-          <input
-            type="url"
-            name="image"
-            value={input.image}
-            placeholder="image URL"
-            onChange={handleChange}
-          />
-        </div>
-        <div>{errors.image && <span>{errors.image}</span>}</div>
-
-        <div>
-          <label>Description: </label>
-          <input
-            type="text"
-            name="summary"
-            value={input.summary}
-            placeholder="recipe's summary"
-            onChange={handleChange}
-          />
-        </div>
-        <div>{errors.summary && <span>{errors.summary}</span>}</div>
-
-        <div>
-          <label>Score: </label>
-          <input
-            type="text"
-            name="healthScore"
-            value={input.healthScore}
-            placeholder="recipe's health score"
-            onChange={handleChange}
-          />
-        </div>
-        <div>{errors.healthScore && <span>{errors.healthScore}</span>}</div>
-
-        <div>
-          <label>Instructions: </label>
-          <input
-            type="text"
-            name="analyzedInstructions"
-            value={input.analyzedInstructions}
-            placeholder="steps for preparation"
-            onChange={handleChange}
-          />
-        </div>
-        <div>{errors.summary && <span>{errors.summary}</span>}</div>
-
-        <div>
-          <label>Diets</label>
+      <form className={style.form} onSubmit={handleSubmit}>
+        <div className={style.card}>
           <div>
-            <select name="diets" onChange={handleSelect}>
-              {diets.map((diet, index) => {
-                return (
-                  <option
-                    className="option_form"
-                    key={index}
-                    value={diet.title}
-                  >
-                    {diet.title}
-                  </option>
-                );
-              })}
-            </select>
+            <label>Name: </label>
+            <input
+              type="text"
+              name="title"
+              value={input.title}
+              placeholder="recipe's name"
+              onChange={handleChange}
+            />
+          </div>
+          <div>{errors.title && <span>{errors.name}</span>}</div>
+
+          <div>
+            <label>Image: </label>
+            <input
+              type="url"
+              name="image"
+              value={input.image}
+              placeholder="image URL"
+              onChange={handleChange}
+            />
+          </div>
+          <div>{errors.image && <span>{errors.image}</span>}</div>
+
+          <div>
+            <label>Description: </label>
+            <input
+              type="text"
+              name="summary"
+              value={input.summary}
+              placeholder="recipe's summary"
+              onChange={handleChange}
+            />
+          </div>
+          <div>{errors.summary && <span>{errors.summary}</span>}</div>
+
+          <div>
+            <label>Score: </label>
+            <input
+              type="text"
+              name="healthScore"
+              value={input.healthScore}
+              placeholder="recipe's health score"
+              onChange={handleChange}
+            />
+          </div>
+          <div>{errors.healthScore && <span>{errors.healthScore}</span>}</div>
+
+          <div>
+            <label>Instructions: </label>
+            <input
+              type="text"
+              name="analyzedInstructions"
+              value={input.analyzedInstructions}
+              placeholder="steps for preparation"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            {errors.analyzedInstructions && (
+              <span>{errors.analyzedInstructions}</span>
+            )}
           </div>
 
           <div>
-            <ul>
-              {selectDiet.map((d, index) => {
-                console.log(d);
-                return (
-                  <li key={index}>
-                    {d.title}
-                    <button
-                      type="button"
-                      value={d.title}
-                      onClick={handleDelete}
+            <label>Diets</label>
+            <div>
+              <select name="diets" onChange={handleSelect}>
+                {diets.map((diet, index) => {
+                  return (
+                    <option
+                      className="option_form"
+                      key={index}
+                      value={diet.title}
                     >
-                      x
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+                      {diet.title}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            <div>
+              <ul className={style.ul}>
+                {selectDiet.map((d, index) => {
+                  console.log(d);
+                  return (
+                    <li key={index}>
+                      {d.title}
+                      <button
+                        type="button"
+                        value={d.title}
+                        onClick={handleDelete}
+                      >
+                        x
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
+          <input
+            type="submit"
+            disabled={
+              errors.title ||
+              errors.image ||
+              errors.summary ||
+              errors.analyzedInstructions ||
+              errors.healthScore
+            }
+            value="Add"
+          />
         </div>
-        <input
-          type="submit"
-          disabled={
-            errors.title ||
-            errors.image ||
-            errors.summary ||
-            errors.analyzedInstructions ||
-            errors.healthScore ||
-            errors.diets
-          }
-          value="Add"
-        />
       </form>
     </div>
   );

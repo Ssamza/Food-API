@@ -1,4 +1,6 @@
-body {
+body {background: -webkit-linear-gradient(90deg, rgb(247, 222, 97) 0%, hsla(44, 100%, 87%, 1) 100%);
+  background-size: 100vw;
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

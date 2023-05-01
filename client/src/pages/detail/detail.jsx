@@ -26,24 +26,34 @@ function Detail() {
     <div>
       {recipe && recipe.title ? (
         <>
-          <div>
+          <div className={style.backContainer}>
             <button className={style.backButton} onClick={backButton}>
               Back
             </button>
+          </div>
+          <div className={style.all}>
             <div className={style.imgContainer}>
               <img src={recipe.image} alt="img" className={style.image} />
+              <div className={style.caption}>
+                <p>
+                  <span className={style.dish}>DISH:</span> {recipe.title}
+                </p>
+                <p>
+                  <span className={style.score}>SCORE:</span>{" "}
+                  {recipe.healthScore}{" "}
+                </p>
+              </div>
             </div>
-            <div>
-              <p>
-                <span>DISH:</span> {recipe.title}
-              </p>
-              <p>
-                <span>SCORE:</span> {recipe.healthScore}{" "}
-              </p>
-              <p>ABOUT:</p>
+            <div className={style.text}>
+              <span className={style.about}>ABOUT:</span>
               <p>{recipe.summary}</p>
+              <br />
+              <br />
               <ol>
-                <p>INSTRUCTIONS:</p>
+                <span className={style.instructions}>INSTRUCTIONS:</span>
+                <br />
+                <br />
+
                 {recipe.analyzedInstructions.map((instruction) => (
                   <li key={instruction.number}>{instruction.step}</li>
                 ))}
@@ -52,8 +62,12 @@ function Detail() {
           </div>
         </>
       ) : (
-        <div className={style.loadingScreen}>
-          <h2>Recipe is loading...</h2>
+        <div className={style.background}>
+          <img
+            src={require("../../images/egg-beater-loader.gif")}
+            alt="buffering"
+            className={style.loading}
+          />
         </div>
       )}
     </div>

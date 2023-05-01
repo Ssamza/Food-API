@@ -1,11 +1,22 @@
+.back{
+background: hsla(50, 100%, 58%, 1);
+
+/* background: linear-gradient(0deg, rgb(252, 221, 62) 0%, hsla(44, 100%, 87%, 1) 100%); */
+
+/* background: -moz-linear-gradient(0deg, rgb(252, 221, 62) 0%, hsla(44, 100%, 87%, 1) 100%); */
+
+background: -webkit-linear-gradient(0deg, rgb(252, 221, 62) 0%, hsla(44, 100%, 87%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFDB28", endColorstr="#FFEDBB", GradientType=1 );
+}
+
+
 .image {
-    background-color: rgba(181, 230, 213, 0.505);
     background-image: url("../../images/Deconstructed\ food-amico2.png");
     background-size: contain;
     background-position: 93%;
     background-repeat: no-repeat;
     height: 100;
-    /* position: relative; */
     padding: 10px;
 }
 
@@ -27,10 +38,10 @@
 }
 
 .text{
-    font-family:monospace, sans-serif;
-    font-weight:lighter;
+    font-family:calibri;
+    font-weight:bold;
     letter-spacing: 2px;
-    font-size: 50px;
+    font-size: 60px;
 
 }
 
@@ -47,11 +58,11 @@
 .button{
     height: 2em;
     border-radius: 50px;
-    background-color: white;
+    background-color: black;
     margin: 1em 12em 1em 12em;
     font-family: monospace;
-    border: 1px solid grey;
-    /* color: white; */
+    border: 1px solid white;
+    color: white;
 }
 
 .button:hover{
@@ -60,23 +71,6 @@
     }
 
 
-/* 
-@keyframes cambio-color {
-    0% {
-        background-color: #d3564a;
-    }
-    25% {
-        background-color: #e29e4b;
-    }
-    50% {
-        background-color: #f4e133c6;
-    }
-    75% {
-            background-color: #e29e4b;
-        }
-    100% {
-        background-color: #d3564a;
-            }
-} */
+
 
 

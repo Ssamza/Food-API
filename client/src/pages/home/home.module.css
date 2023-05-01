@@ -1,3 +1,33 @@
+@font-face {
+    font-family: 'ConfigRounded' ;
+    src: url(../../fonts/ConfigRoundedBold.ttf);
+}
+
+.title {
+    
+    /* background-color: white */
+    border-radius: 50px;
+    width: 400px;
+    margin-left: 200px;
+    margin-bottom: 40px;
+    background: linear-gradient(45deg, #ffffff, #f7f4f4);
+}
+
+
+.letter{
+    font-family: 'ConfigRounded';
+        font-size: 50px;
+            color: transparent;
+            text-shadow: 1.2px 1.2px 3px rgb(242, 222, 164, 5), 0 0  rgb(157, 155, 155) ;
+}
+
+.all{
+    position: absolute;
+    top: 29%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+
 .background{
     background-color: white;
     background-size: cover;
@@ -6,8 +36,62 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+.loading{
+    filter: brightness(100%) hue-rotate(25deg) saturate(70%);
+    height: 450px;
 }
 
-.loading{
-    height: 450px;
+.pages button {
+    margin-top: 40px;
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border:0.1px rgb(59, 58, 58) solid;
+    font-family: Arial,
+
+}
+
+.pages button:hover{
+    transform: scale(1.04);
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+}
+
+.filterContainer{
+        display: flex;
+        justify-content: space-between;
+}
+
+.navContainer{
+    position: absolute;
+    top: 20%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+}
+
+
+.addContainer {
+    position: absolute;
+    top: 135px;
+    left: 78%;
+    transform: translateX(-50%);
+}
+
+.addButton{
+    font-family: monospace;
+    font-weight: lighter;
+    font-size: 15px;
+    background-color: rgb(248, 229, 137);
+    padding: 5px 35px 5px 35px;
+    border-radius: 80px;
+    border: groove;
+}
+
+.addButton:hover{
+    transform: scale(1.1);
 }
